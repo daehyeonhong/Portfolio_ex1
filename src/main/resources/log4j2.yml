@@ -11,7 +11,7 @@ Configuration:
       - name: time-format
         value: "[%date{ABSOLUTE}:%-5relative]"
       - name: console-pattern
-        value: "[%highlight{%-5level}] %cyan{%{time-format}} %msg%n%throwable"
+        value: "[%highlight{%-5level}] %cyan{${time-format}} %msg%n%throwable"
       - name: file-pattern
         value: "[%-5level] ${time-format} %msg%n%throwable"
 
@@ -28,12 +28,12 @@ Configuration:
     File:
       name: File_Appender
       fileName: ${log-path}/logfile.log
-      patternLayout:
+      PatternLayout:
         charset: UTF-8
         pattern: ${file-pattern}
     RollingFile:
       - name: RollingFile_Appender
-        fileName: ${log-path}/rollingFile.log
+        fileName: ${log-path}/rollingfile.log
         filePattern: "${log-path}/archive/${date-format}/rollingFile.log.gz"
         PatternLayout:
           charset: UTF-8
@@ -42,10 +42,10 @@ Configuration:
           TimeBasedTriggeringPolicy:
             interval: 1
           SizeBasedTriggeringPolicy:
-            size: 1 GB
-          DefaultRollOverStrategy:
-            max: 10
-            fileIndex: min
+            size: 200 KB
+        DefaultRollOverStrategy:
+          max: 10
+          fileIndex: min
   Loggers:
     Root:
       level: INFO
@@ -56,7 +56,7 @@ Configuration:
     Logger:
       - name: com.demo.portfolio
         additivity: false
-        leve: INFO
+        level: INFO
         AppenderRef:
           - ref: Console_Appender
           - ref: File_Appender

@@ -5,11 +5,11 @@ spring:
   jpa:
     open-in-view: false
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: validate
   datasource:
     url: jdbc:mysql://localhost:3306/springbatch?useUnicode=true&characterEncoding=utf8
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
-#logging:
-#  config: classpath:log4j2.yml
+logging:
+  config: classpath:log4j2.yml
