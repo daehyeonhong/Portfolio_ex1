@@ -13,14 +13,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Index;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
 @Entity
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "member", indexes = {@Index(name = "idx_username", columnList = "username"), @Index(name = "idx_phone", columnList = "phone")})
 public class MemberEntity extends BaseEntity {
     @Id
@@ -44,4 +45,17 @@ public class MemberEntity extends BaseEntity {
     Integer age;
     @Column(nullable = false)
     boolean activated;
+
+    @Builder
+    private MemberEntity(final String username, final String password, final String name, final String email, final String phone, final Gender gender, final Role role, final Integer age, final boolean activated) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.gender = gender;
+        this.role = role;
+        this.age = age;
+        this.activated = activated;
+    }
 }
