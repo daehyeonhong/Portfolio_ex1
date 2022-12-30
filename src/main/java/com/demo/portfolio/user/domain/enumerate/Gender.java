@@ -14,8 +14,8 @@ public enum Gender {
 
     public static Gender of(final String gender) {
         return switch (gender) {
-            case "male" -> Gender.MALE;
-            case "female" -> Gender.FEMALE;
+            case "M" -> Gender.MALE;
+            case "F" -> Gender.FEMALE;
             default -> Gender.NONE;
         };
     }
