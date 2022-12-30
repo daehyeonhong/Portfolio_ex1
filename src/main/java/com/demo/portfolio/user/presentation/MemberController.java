@@ -19,6 +19,6 @@ public class MemberController {
 
     @PostMapping(value = "/members")
     public ResponseEntity<String> signUp(@Validated @RequestBody final MemberDto.MemberSignUpDto memberSignUpDto) {
-        return new ResponseEntity<>(String.valueOf(this.memberService.save(memberSignUpDto).getId()), HttpStatus.CREATED);
+        return new ResponseEntity<>(String.valueOf(this.memberService.save(memberSignUpDto)), HttpStatus.CREATED);
     }
 }

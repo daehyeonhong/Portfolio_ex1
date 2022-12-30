@@ -20,7 +20,7 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public MemberEntity save(final MemberDto.MemberSignUpDto memberSignUpDto) {
+    public Long save(final MemberDto.MemberSignUpDto memberSignUpDto) {
         return this.memberRepository.save(MemberEntity.builder()
                 .username(memberSignUpDto.username())
                 .password(memberSignUpDto.password())
@@ -31,6 +31,6 @@ public class MemberServiceImpl implements MemberService {
                 .role(Role.USER)
                 .age(memberSignUpDto.age())
                 .activated(true)
-                .build());
+                .build()).getId();
     }
 }
